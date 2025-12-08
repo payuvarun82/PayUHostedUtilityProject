@@ -105,16 +105,32 @@
             box-sizing: border-box;
         }
         
-        /* Fix for flows outside container - ensure they respect max-width */
+        /* Fix for flows outside container - ensure they respect max-width and align with container */
         body > .flow-content {
             max-width: 1400px;
-            margin: 20px auto;
+            margin: 0 auto;
             background: var(--bg-secondary);
             border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow-heavy);
             position: relative;
             box-sizing: border-box;
+        }
+        
+        /* Add header spacer to flows outside container to match container structure */
+        /* Container has: header -> flow-header (no gap) */
+        /* Flows outside need: header spacer -> flow-header (no gap) */
+        /* Header actual height: padding (1.5rem = 24px top + 24px bottom = 48px) + flex content height */
+        /* Flex content: logo (60px) is tallest, but text wraps to ~2 lines (h1 ~35px + gap + p ~20px = ~55px) */
+        /* So total: 24px + max(60px, 55px) + 24px = 24 + 60 + 24 = 108px, but with line-height it's ~130px */
+        body > .flow-content::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 130px;
+            background: var(--gradient-primary);
+            margin: 0;
+            padding: 0;
         }
         
         body > .flow-content .flow-header {
