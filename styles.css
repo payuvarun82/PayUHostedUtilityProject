@@ -94,6 +94,15 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow-heavy);
+            position: relative;
+        }
+        
+        .container > .flow-content,
+        .container .flow-content {
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            box-sizing: border-box;
         }
         
         .header {
@@ -168,6 +177,8 @@
         .flow-content {
             display: none;
             width: 100%;
+            overflow: hidden;
+            box-sizing: border-box;
         }
         
         .flow-content.active {
@@ -183,11 +194,23 @@
             box-sizing: border-box;
             margin: 0;
             overflow: hidden;
+            position: relative;
         }
         
         .flow-content .flow-header {
             border-bottom: 2px solid var(--accent-primary) !important;
             background: #fffef5;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        .container .flow-content .flow-header {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
         }
         
         .flow-header h2 {
