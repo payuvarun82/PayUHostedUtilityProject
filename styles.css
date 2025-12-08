@@ -105,6 +105,38 @@
             box-sizing: border-box;
         }
         
+        /* Fix for flows outside container - ensure they respect max-width */
+        body > .flow-content {
+            max-width: 1400px;
+            margin: 20px auto;
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-heavy);
+            position: relative;
+            box-sizing: border-box;
+        }
+        
+        body > .flow-content .flow-header {
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            padding-left: 3rem;
+            padding-right: 3rem;
+            background: linear-gradient(to bottom, #f0f9f7, #e6f5f2) !important;
+        }
+        
+        /* Universal fix for all flow-headers to prevent border overflow */
+        .flow-content .flow-header {
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+        
         .header {
             background: var(--gradient-primary);
             padding: 1.5rem 2rem;
@@ -186,7 +218,7 @@
         }
         
         .flow-header {
-            background: #fffef5;
+            background: linear-gradient(to bottom, #f0f9f7, #e6f5f2);
             padding: 1.5rem 3rem;
             border-bottom: 2px solid var(--accent-primary) !important;
             width: 100%;
@@ -199,7 +231,7 @@
         
         .flow-content .flow-header {
             border-bottom: 2px solid var(--accent-primary) !important;
-            background: #fffef5;
+            background: linear-gradient(to bottom, #f0f9f7, #e6f5f2);
             width: 100%;
             max-width: 100%;
             box-sizing: border-box;
@@ -849,7 +881,7 @@
             .flow-header {
                 padding: 1rem 1.5rem;
                 width: 100%;
-                background: #fffef5 !important;
+                background: linear-gradient(to bottom, #f0f9f7, #e6f5f2) !important;
                 border-bottom: 2px solid var(--accent-primary) !important;
             }
             
@@ -1194,7 +1226,7 @@
             .flow-header {
                 padding: 0.75rem 1rem;
                 width: 100%;
-                background: #fffef5 !important;
+                background: linear-gradient(to bottom, #f0f9f7, #e6f5f2) !important;
                 border-bottom: 2px solid var(--accent-primary) !important;
             }
             
