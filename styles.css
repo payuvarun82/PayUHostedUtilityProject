@@ -167,6 +167,7 @@
         /* Flow Sections */
         .flow-content {
             display: none;
+            width: 100%;
         }
         
         .flow-content.active {
@@ -177,13 +178,19 @@
             background: linear-gradient(135deg, #e6f7ff 0%, #bae7ff 100%);
             padding: 1.5rem 3rem;
             border-bottom: 2px solid var(--accent-primary);
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            margin: 0;
+            overflow: hidden;
         }
         
         .flow-header h2 {
-            font-size: 1.75rem;
+            font-size: 2rem;
             font-weight: 700;
-            color: #024538;
+            color: var(--accent-primary);
             margin: 0;
+            text-align: left;
         }
         
         .back-button {
@@ -805,10 +812,12 @@
             
             .flow-header {
                 padding: 1rem 1.5rem;
+                width: 100%;
             }
             
             .flow-header h2 {
-                font-size: 1.25rem;
+                font-size: 1.5rem;
+                text-align: left;
             }
             
             .flow-content {
@@ -1004,10 +1013,12 @@
             
             .flow-header {
                 padding: 0.75rem 1rem;
+                width: 100%;
             }
             
             .flow-header h2 {
-                font-size: 1rem;
+                font-size: 1.25rem;
+                text-align: left;
             }
             
             .section {
