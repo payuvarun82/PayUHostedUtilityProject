@@ -54,6 +54,13 @@
         document.addEventListener('DOMContentLoaded', function() {
             console.log('🔄 Page Loaded - Generating fresh transaction IDs for all flows');
             
+            // Hide all containers and flows initially
+            const allContainers = document.querySelectorAll('.container');
+            allContainers.forEach(container => container.classList.remove('active'));
+            
+            const allFlows = document.querySelectorAll('.flow-content');
+            allFlows.forEach(flow => flow.classList.remove('active'));
+            
             // Initialize transaction IDs for all flows
             generateTransactionId('crossborder');
             generateTransactionId('nonseamless');
@@ -219,7 +226,10 @@
                 console.log('Flow from URL:', flowFromURL);
                 console.log('Full pathname:', pathname);
                 
-                // Hide all flows first
+                // Hide all containers and flows first
+                const allContainers = document.querySelectorAll('.container');
+                allContainers.forEach(container => container.classList.remove('active'));
+                
                 const allFlows = document.querySelectorAll('.flow-content');
                 allFlows.forEach(flow => flow.classList.remove('active'));
                 
@@ -227,6 +237,11 @@
                 const targetFlow = document.getElementById(flowFromURL + 'Flow');
                 if (targetFlow) {
                     targetFlow.classList.add('active');
+                    // Show the container that contains this flow
+                    const parentContainer = targetFlow.closest('.container');
+                    if (parentContainer) {
+                        parentContainer.classList.add('active');
+                    }
                     currentFlow = flowFromURL;
                 } else {
                     console.error('✗ Flow element not found:', flowFromURL + 'Flow');
