@@ -98,24 +98,37 @@
         
         .header {
             background: var(--gradient-primary);
-            padding: 2rem 2rem 1.5rem 2rem;
-            text-align: center;
+            padding: 1.5rem 2rem;
             position: relative;
             overflow: hidden;
         }
         
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
         .header-logo {
-            display: inline-block;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
             position: relative;
             z-index: 1;
         }
         
         .header-logo svg {
-            height: 100px;
+            height: 60px;
             width: auto;
             display: block;
+        }
+        
+        .header-text-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
         
         .header::before {
@@ -135,17 +148,18 @@
         }
         
         .header h1 {
-            font-size: 2.5rem;
+            font-size: 1.75rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin: 0;
             color: white;
             position: relative;
             z-index: 1;
         }
         
         .header p {
-            font-size: 1.2rem;
+            font-size: 0.95rem;
             color: rgba(255, 255, 255, 0.9);
+            margin: 0;
             position: relative;
             z-index: 1;
         }
@@ -183,6 +197,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
             padding: 3rem;
+            padding-bottom: 100px;
         }
         
         .section {
@@ -567,6 +582,15 @@
             margin-top: 2rem;
             grid-column: 1 / -1;
             flex-wrap: wrap;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-secondary);
+            padding: 1rem 2rem;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            border-top: 1px solid var(--border-color);
         }
         
         .pay-button-wrapper .button {
@@ -721,17 +745,19 @@
                 grid-template-columns: 1fr;
                 gap: 2rem;
                 padding: 2rem;
+                padding-bottom: 100px;
             }
             
             .pay-button-wrapper {
-                flex-direction: column;
-                align-items: stretch;
+                flex-direction: row;
+                align-items: center;
                 gap: 0.75rem;
+                flex-wrap: wrap;
             }
             
             .pay-button-wrapper .button {
-                width: 100%;
-                margin: 0;
+                flex: 1 1 auto;
+                min-width: 120px;
             }
             
         }
@@ -743,15 +769,23 @@
             }
             
             .header {
-                padding: 1.5rem 1rem 1rem 1rem;
+                padding: 1rem;
+            }
+            
+            .header-content {
+                gap: 1rem;
+            }
+            
+            .header-logo svg {
+                height: 50px;
             }
             
             .header h1 {
-                font-size: 1.75rem;
+                font-size: 1.25rem;
             }
             
             .header p {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
             
             
@@ -881,6 +915,21 @@
                 font-size: 0.875rem;
             }
             
+            .pay-button-wrapper {
+                padding: 0.75rem 1rem;
+                gap: 0.5rem;
+            }
+            
+            .pay-button-wrapper .button {
+                min-width: auto;
+                font-size: 0.875rem;
+                padding: 0.75rem 1rem;
+            }
+            
+            .main-content {
+                padding-bottom: 120px;
+            }
+            
             /* Scenario cards */
             .scenario-card {
                 padding: 0.875rem !important;
@@ -909,21 +958,24 @@
         
         /* Small Mobile Devices */
         @media (max-width: 480px) {
-            .header-logo {
-                padding: 0.5rem 1rem;
-                margin-bottom: 1rem;
+            .header {
+                padding: 0.75rem;
+            }
+            
+            .header-content {
+                gap: 0.75rem;
             }
             
             .header-logo svg {
-                height: 35px;
+                height: 40px;
             }
             
             .header h1 {
-                font-size: 1.5rem;
+                font-size: 1.1rem;
             }
             
             .header p {
-                font-size: 0.85rem;
+                font-size: 0.75rem;
             }
             
             
