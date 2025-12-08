@@ -173,6 +173,19 @@
             display: block;
         }
         
+        .flow-header {
+            background: linear-gradient(135deg, #e6f7ff 0%, #bae7ff 100%);
+            padding: 1.5rem 3rem;
+            border-bottom: 2px solid var(--accent-primary);
+        }
+        
+        .flow-header h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #024538;
+            margin: 0;
+        }
+        
         .back-button {
             margin: 2rem 3rem 0;
             padding: 0.75rem 1.5rem;
@@ -577,7 +590,7 @@
         .pay-button-wrapper {
             display: flex;
             gap: 1rem;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: center;
             margin-top: 2rem;
             grid-column: 1 / -1;
@@ -751,12 +764,13 @@
             .pay-button-wrapper {
                 flex-direction: row;
                 align-items: center;
+                justify-content: flex-end;
                 gap: 0.75rem;
                 flex-wrap: wrap;
             }
             
             .pay-button-wrapper .button {
-                flex: 1 1 auto;
+                flex: 0 0 auto;
                 min-width: 120px;
             }
             
@@ -788,6 +802,14 @@
                 font-size: 0.85rem;
             }
             
+            
+            .flow-header {
+                padding: 1rem 1.5rem;
+            }
+            
+            .flow-header h2 {
+                font-size: 1.25rem;
+            }
             
             .flow-content {
                 padding: 1rem 0.5rem;
@@ -918,12 +940,14 @@
             .pay-button-wrapper {
                 padding: 0.75rem 1rem;
                 gap: 0.5rem;
+                justify-content: flex-end;
             }
             
             .pay-button-wrapper .button {
                 min-width: auto;
                 font-size: 0.875rem;
                 padding: 0.75rem 1rem;
+                flex: 0 0 auto;
             }
             
             .main-content {
@@ -978,6 +1002,13 @@
                 font-size: 0.75rem;
             }
             
+            .flow-header {
+                padding: 0.75rem 1rem;
+            }
+            
+            .flow-header h2 {
+                font-size: 1rem;
+            }
             
             .section {
                 padding: 0.875rem;
