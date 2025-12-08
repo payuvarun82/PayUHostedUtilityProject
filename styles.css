@@ -95,6 +95,12 @@
             overflow: hidden;
             box-shadow: var(--shadow-heavy);
             position: relative;
+            display: none;
+        }
+        
+        /* Show container only when it contains an active flow */
+        .container.active {
+            display: block;
         }
         
         .container > .flow-content,
