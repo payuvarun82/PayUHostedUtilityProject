@@ -190,7 +190,9 @@
             
             // Path-Based Routing: Read flow from URL pathname
             const pathname = window.location.pathname;
-            const pathSegments = pathname.split('/').filter(segment => segment !== '');
+            // Clean up pathname: remove index.html, handle double slashes, trim
+            let cleanPath = pathname.replace(/\/index\.html/gi, '').replace(/\/+/g, '/').replace(/^\/|\/$/g, '');
+            const pathSegments = cleanPath.split('/').filter(segment => segment !== '' && segment !== 'index.html');
             const validFlows = ['crossborder', 'payu-hosted', 'subscription', 'tpv', 'upiotm', 'preauth', 'checkoutplus', 'split', 'bankoffer'];
             
             // Map route names to internal flow identifiers
@@ -198,10 +200,18 @@
                 'payu-hosted': 'nonseamless'
             };
             
-            // Get flow name from path (last segment)
-            const flowFromPath = pathSegments.length > 0 ? pathSegments[pathSegments.length - 1].toLowerCase() : null;
+            // Get flow name from path (last segment, or first if only one segment)
+            const flowFromPath = pathSegments.length > 0 ? pathSegments[pathSegments.length - 1].toLowerCase().replace(/\.html$/i, '') : null;
             const routeFromURL = validFlows.includes(flowFromPath) ? flowFromPath : null;
             const flowFromURL = routeFromURL && routeToFlowMap[routeFromURL] ? routeToFlowMap[routeFromURL] : routeFromURL;
+            
+            // Debug logging
+            console.log('=== Routing Debug ===');
+            console.log('Original pathname:', pathname);
+            console.log('Clean path:', cleanPath);
+            console.log('Path segments:', pathSegments);
+            console.log('Flow from path:', flowFromPath);
+            console.log('Flow from URL:', flowFromURL);
             
             if (flowFromURL) {
                 // URL takes precedence - load flow from URL path
@@ -209,9 +219,18 @@
                 console.log('Flow from URL:', flowFromURL);
                 console.log('Full pathname:', pathname);
                 
+                // Hide all flows first
+                const allFlows = document.querySelectorAll('.flow-content');
+                allFlows.forEach(flow => flow.classList.remove('active'));
+                
                 // Show the flow from URL
-                document.getElementById(flowFromURL + 'Flow').classList.add('active');
-                currentFlow = flowFromURL;
+                const targetFlow = document.getElementById(flowFromURL + 'Flow');
+                if (targetFlow) {
+                    targetFlow.classList.add('active');
+                    currentFlow = flowFromURL;
+                } else {
+                    console.error('✗ Flow element not found:', flowFromURL + 'Flow');
+                }
                 
                 // Save to localStorage
                 localStorage.setItem('currentPaymentFlow', flowFromURL);
